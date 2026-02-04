@@ -29,8 +29,8 @@ This project implements an end-to-end MLOps pipeline for Sentiment Analysis usin
 
 1.  **Clone the repository:**
     ```bash
-    git clone <your-repo-url>
-    cd <your-repo-name>
+    git clone https://github.com/2coolkalamkaar/mlops
+    cd <repo-folder>
     ```
 
 2.  **Start the MLOps Stack:**
