@@ -1,0 +1,74 @@
+
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - preprocess_text_data
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_local_data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: load_local_data
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - train_and_log_mlflow
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: preprocess_text_data
+  retry_config: null
+  status: updated
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - load_local_data
+  uuid: preprocess_text_data
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: train_and_log_mlflow
+  retry_config: null
+  status: updated
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - preprocess_text_data
+  uuid: train_and_log_mlflow
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2026-02-02 06:00:00'
+data_integration: null
+description: End-to-end Sentiment Analysis Pipeline
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: sentiment_analysis_workflow
+notification_config: {}
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+updated_at: '2026-02-02 07:00:00'
+uuid: sentiment_analysis_workflow
+variables_dir: /home/rahul/.mage_data/sentiment_analysis_pipeline
+widgets: []

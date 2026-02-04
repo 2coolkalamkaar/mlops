@@ -1,0 +1,15 @@
+
+aiofiles
+kagglehub
+mage-ai
+mlflow
+nltk
+numpy
+pandas
+polars
+redis
+scikit-learn
+sentry-sdk
+simplejson
+sqlalchemy
+tensorflow-cpu

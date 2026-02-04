@@ -1,0 +1,29 @@
+
+version: '3'
+services:
+  mage:
+    build: .
+    container_name: mage-sentiment-analysis
+    ports:
+      - "6789:6789"
+    volumes:
+      - ./sentiment_analysis_pipeline:/app/sentiment_analysis_pipeline
+      - ./sentiment-analysis-mlflow:/app/sentiment-analysis-mlflow
+      - ./mlflow.db:/app/mlflow.db
+      - ./mlruns:/app/mlruns
+      - /home/rahul/.cache/kagglehub/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews/versions/1:/app/data
+    environment:
+      - MAGE_CODE_PATH=/app/sentiment_analysis_pipeline
+    command: mage start sentiment_analysis_pipeline
+
+  mlflow-serve:
+    build: .
+    container_name: mlflow-serve-sentiment
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlflow.db:/app/mlflow.db
+      - ./mlruns:/app/mlruns
+    environment:
+      - MLFLOW_TRACKING_URI=sqlite:///mlflow.db
+    command: mlflow models serve --model-uri models:/SentimentAnalysis-Mage/2 --host 0.0.0.0 --port 5000 --no-conda
